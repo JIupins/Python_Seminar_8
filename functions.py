@@ -16,10 +16,7 @@ def create_base():
     return name1
 
 
-# 2 Создание новой таблицы.
-# Данные для таблицы:
-# CREATE TABLE IF NOT EXISTS telephone_book(id INTEGER PRIMARY KEY, Имя TEXT NOT NULL, Фамилия TEXT NOT NULL, Отчество TEXT NOT NULL,
-# Сотовый REAL NOT NULL, Домашний REAL NOT NULL);
+# 2 Создание новой таблицы в базе данных.
 def create_new_table():
     try:
         sql_connect = sqlite3.connect('sql_base.db')
@@ -70,7 +67,7 @@ def past_dates():
             sql_connect.close()
             print("Соединение с SQLite закрыто.")
 
-
+# 3.1 Формирование словаря с данными, по человеку
 def create_new_person():
     dict1 = {'Id': 0, 'Имя': '', 'Фамилия': '', 'Отчество': '', 'Сотовый телефон': 0, 'Домашний телефон': 0, }
     for (k, v) in dict1.items():
@@ -78,7 +75,7 @@ def create_new_person():
     print(dict1)
     return dict1
 
-
+# 4 Просмотреть всю таблицу
 def read_all_table(name='sql_base.db'):
     try:
         sqlite_connection = sqlite3.connect(name)
@@ -105,7 +102,7 @@ def read_all_table(name='sql_base.db'):
             sqlite_connection.close()
             print("Соединение с SQLite закрыто.")
 
-
+# 5 Просмотреть одну запись в таблице
 def read_single_row(name, key):
     try:
         sqlite_connection = sqlite3.connect('sql_base.db')
@@ -129,7 +126,7 @@ def read_single_row(name, key):
             sqlite_connection.close()
             print("Соединение с SQLite закрыто.")
 
-
+# 6 Обновить информацию в таблице
 def update_row_table():
     list1 = list()
     list1.append(create_list('Введите название столбца в котором необходимо найти нужную строку: '))  # List[2]
@@ -158,7 +155,7 @@ def create_list(name):
     val = input(f"{name}: ")
     return val
 
-
+# 7 Удалить запись из таблицы
 def delete_row():
     name1 = create_list('Введине название столбца в котором находится удаляемое значение: ')
     key1 = create_list('Введине значение, находящееся в удаляемой строке, данного столбца: ')
